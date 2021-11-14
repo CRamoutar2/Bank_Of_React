@@ -74,13 +74,13 @@ export default class App extends Component {
   }
 
   render() {
-    const HomeComponent = () => (<Home accountBalance={this.state.accountBalance}/>);
+    const HomeComponent = () => (<Home accountBalance={this.state.accountBalance} />);
     const UserProfileComponent = () => (
         <UserProfile userName={this.state.currentUser.userName} memberSince={this.state.currentUser.memberSince}  />
     );
     const LogInComponent = () => (<LogIn user={this.state.currentUser} mockLogIn={this.mockLogIn} />);
-    const CreditsComponent = ()=>(<Credits credits={this.state.credits}/>);
-    const DebitsComponent = () =>(<Debits debits={this.state.debits}/>);
+    const CreditsComponent = ()=>(<Credits credits={this.state.credits} />);
+    const DebitsComponent = () =>(<Debits debits={this.state.debits} addDebit={this.addDebit} />);
     return (
         <Router>
           <div>
