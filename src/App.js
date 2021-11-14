@@ -22,17 +22,26 @@ export default class App extends Component {
   }
 
   async componentDidMount() {
-    let credits = fetch("https://moj-api.herokuapp.com/credits")
-                  .then(res => res.json())
-                  .then(result => {
-                    let arr = []
-                    result.forEach(item => arr.push(item.amount))
-                    this.setState({
-                      ...this.state,
-                      credits: arr
-                    })
-                    // console.log(arr)
-                  })
+    fetch("https://moj-api.herokuapp.com/credits")
+      .then(res => res.json())
+      .then(result => {
+        let arr = [];
+        result.forEach(item => arr.push(item.amount))
+        this.setState({
+          ...this.state,
+          credits: arr
+        })
+      })
+    fetch("https://moj-api.herokuapp.com/debits")
+      .then(res => res.json())
+      .then(result => {
+        let arr = [];
+        result.forEach(item => arr.push(item.amount))
+        this.setState({
+          ...this.state,
+          debits: arr
+        })
+      })
   }
 
   render() {
