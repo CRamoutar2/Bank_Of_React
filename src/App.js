@@ -24,28 +24,45 @@ export default class App extends Component {
   async componentDidMount() {
     fetch("https://moj-api.herokuapp.com/credits")
       .then(res => res.json())
-      .then(result => {
-        let arr = [];
-        result.forEach(item => arr.push(item.amount))
+      .then(data => {
         this.setState({
           ...this.state,
-          credits: arr
+          credits: data,
         })
+        // let arr = [];
+        // data.forEach(item => arr.push(item.amount))
+        // this.setState({
+        //   ...this.state,
+        //   credits: arr
+        // })
       })
+      .then(console.log(this.state.credits))
+
     fetch("https://moj-api.herokuapp.com/debits")
       .then(res => res.json())
-      .then(result => {
-        let arr = [];
-        result.forEach(item => arr.push(item.amount))
+      .then(data => {
         this.setState({
           ...this.state,
-          debits: arr
+          debits: data,
         })
-      })
+      }) 
+    let debitSum = 0, creditSum = 0;
+    this.state.credits.forEach(credit => creditSum += credit.amount)
+    this.state.debits.forEach(debit => debitSum += debit.amount)
+    this.setState({
+      ...this.setState,
+      accountBalance: creditSum - debitSum,
+    })
+  }
+
+  addDebit(e) {
+    e.preventDefault();
+    const desc = e.target[0].value;
+    const amt = Number(e.target[1].value);
+    console.log(desc, amt)
   }
 
   render() {
-
     const HomeComponent = () => (<Home accountBalance={this.state.accountBalance}/>);
     const UserProfileComponent = () => (
         <UserProfile userName={this.state.currentUser.userName} memberSince={this.state.currentUser.memberSince}  />

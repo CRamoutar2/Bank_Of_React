@@ -4,12 +4,15 @@ import {Link} from 'react-router-dom';
 
 export default class Credits extends Component {
   render() {
-    let sum = 0;
-    this.props.credits.forEach(amount => sum = sum + amount);
     return (
         <div>
           <h1>Credit Page</h1>
-          <div> Credits: {sum}{this.props.credits.map(amount => <p>{amount}</p>)} </div>
+          <div> Credits: 
+            {this.props.credits.map(credit => {
+              let date = credit.date.slice(0,10);
+              return <li key={credit.id}>{credit.amount} {credit.description} {date}</li>
+            })}
+          </div>
           <Link to="/">Return to Home</Link>
         </div>
     );
