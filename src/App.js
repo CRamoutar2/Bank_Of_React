@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import Home from './components/Home';
 import UserProfile from './components/UserProfile';
@@ -6,11 +6,10 @@ import LogIn from './components/Login';
 import Credits from './components/Credits';
 import Debits from './components/Debits';
 
-class App extends Component {
+export default class App extends Component {
 
-  constructor() {
-    super();
-
+  constructor(props) {
+    super(props);
     this.state = {
       accountBalance: 14568.28,
       currentUser: {
@@ -20,6 +19,20 @@ class App extends Component {
       debits:[],
       credits:[]
     }
+  }
+
+  async componentDidMount() {
+    let credits = fetch("https://moj-api.herokuapp.com/credits")
+                  .then(res => res.json())
+                  .then(result => {
+                    let arr = []
+                    result.forEach(item => arr.push(item.amount))
+                    this.setState({
+                      ...this.state,
+                      credits: arr
+                    })
+                    // console.log(arr)
+                  })
   }
 
   render() {
@@ -50,5 +63,3 @@ class App extends Component {
     this.setState({currentUser: newUser})
   }
 }
-
-export default App;
