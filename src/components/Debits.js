@@ -1,10 +1,15 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
+
+
 class Debits extends Component {
     render() {
       return (
-          <div>
-            
-          </div>
+        <div>
+          <h1>Debit Page</h1>
+          <div> Debits: {this.props.debits} </div>
+          <Link to="/">Return to Home</Link>
+        </div>
       );
     }
   }
