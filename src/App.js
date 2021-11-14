@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import {BrowserRouter as Router, Route} from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import axios from "axios";
 import Home from './components/Home';
 import UserProfile from './components/UserProfile';
 import LogIn from './components/Login';
@@ -22,37 +23,47 @@ export default class App extends Component {
   }
 
   async componentDidMount() {
-    fetch("https://moj-api.herokuapp.com/credits")
-      .then(res => res.json())
-      .then(data => {
-        this.setState({
-          ...this.state,
-          credits: data,
-        })
-        // let arr = [];
-        // data.forEach(item => arr.push(item.amount))
-        // this.setState({
-        //   ...this.state,
-        //   credits: arr
-        // })
-      })
-      .then(console.log(this.state.credits))
+    // fetch("https://moj-api.herokuapp.com/credits")
+    //   .then(res => res.json())
+    //   .then(data => {
+    //     this.setState({
+    //       ...this.state,
+    //       credits: data,
+    //     })
+    //   })
+    //   .then(console.log(this.state.credits))
 
-    fetch("https://moj-api.herokuapp.com/debits")
-      .then(res => res.json())
-      .then(data => {
-        this.setState({
-          ...this.state,
-          debits: data,
-        })
-      }) 
+    // fetch("https://moj-api.herokuapp.com/debits")
+    //   .then(res => res.json())
+    //   .then(data => {
+    //     this.setState({
+    //       ...this.state,
+    //       debits: data,
+    //     })
+    //   }) 
+    // let debitSum = 0, creditSum = 0;
+    // this.state.credits.forEach(credit => creditSum += credit.amount)
+    // this.state.debits.forEach(debit => debitSum += debit.amount)
+    // this.setState({
+    //   ...this.setState,
+    //   accountBalance: creditSum - debitSum,
+    // })
+    let debits = await axios.get("https://moj-api.herokuapp.com/debits")
+    let credits = await axios.get("https://moj-api.herokuapp.com/credits")
+   
+    debits = debits.data
+    credits = credits.data
+
     let debitSum = 0, creditSum = 0;
-    this.state.credits.forEach(credit => creditSum += credit.amount)
-    this.state.debits.forEach(debit => debitSum += debit.amount)
-    this.setState({
-      ...this.setState,
-      accountBalance: creditSum - debitSum,
+    debits.forEach((debit) => {
+      debitSum += debit.amount
     })
+    credits.forEach((credit) => {
+      creditSum += credit.amount
+    })
+
+    let accountBalance = creditSum - debitSum;
+    this.setState({debits, credits, accountBalance});
   }
 
   addDebit(e) {
