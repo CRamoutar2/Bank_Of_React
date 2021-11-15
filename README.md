@@ -1,3 +1,15 @@
+# Assignment_3
+<br>
+Assignment 3</br>
+<u>Contributors:</u></br>
+<ul>
+<li>Chethram Ramoutar</li>
+<li>David Guyot</li>
+<li>Isabel Abonitalla</li>
+</ul>
+<br><br>
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
