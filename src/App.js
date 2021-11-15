@@ -79,7 +79,10 @@ export default class App extends Component {
       amount: amt, 
       date: date,
     };
-    this.setState({debits: [...this.state.debits, newEntry]});
+    this.setState({
+      debits: [...this.state.debits, newEntry],
+      accountBalance: this.state.accountBalance + amt,
+    });
   }
   
   addCredit(e) {
@@ -93,7 +96,10 @@ export default class App extends Component {
       amount: amt, 
       date: date,
     };
-    this.setState({credits: [...this.state.credits, newEntry]});
+    this.setState({
+      credits: [...this.state.credits, newEntry],
+      accountBalance: this.state.accountBalance - amt,
+    });
   }
 
   render() {
