@@ -1,6 +1,6 @@
 # Assignment_4: Bank of React
 
-<u>Contributors:</u></br>
+<u>Contributors:</u>
 <ul>
 <li>Chethram Ramoutar</li>
 <li>David Guyot</li>
