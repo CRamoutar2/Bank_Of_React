@@ -19,7 +19,9 @@ export default class App extends Component {
       },
       debits:[],
       credits:[]
-    }
+    };
+    this.addDebit = this.addDebit.bind(this);
+    this.addCredit = this.addCredit.bind(this);
   }
 
   async componentDidMount() {
@@ -70,7 +72,28 @@ export default class App extends Component {
     e.preventDefault();
     const desc = e.target[0].value;
     const amt = Number(e.target[1].value);
-    console.log(desc, amt)
+    const date = e.target[2].value;
+    console.log(desc, amt, date);
+    const newEntry = {
+      description: desc,
+      amount: amt, 
+      date: date,
+    };
+    this.setState({debits: [...this.state.debits, newEntry]});
+  }
+  
+  addCredit(e) {
+    e.preventDefault();
+    const desc = e.target[0].value;
+    const amt = Number(e.target[1].value);
+    const date = e.target[2].value;
+    console.log(desc, amt, date);
+    const newEntry = {
+      description: desc,
+      amount: amt, 
+      date: date,
+    };
+    this.setState({credits: [...this.state.credits, newEntry]});
   }
 
   render() {

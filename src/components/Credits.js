@@ -13,6 +13,12 @@ export default class Credits extends Component {
               return <li key={credit.id}>{credit.amount} {credit.description} {date}</li>
             })}
           </div>
+          <form onSubmit={this.props.addCredit}>
+            <input type="text" name="description" />
+            <input type="number" name="amount" />
+            <input type="date" name="date" />
+            <button type="submit">Add Credit</button>
+          </form>
           <Link to="/">Return to Home</Link>
         </div>
     );

@@ -16,6 +16,7 @@ export default class Debits extends Component {
         <form onSubmit={this.props.addDebit}>
           <input type="text" name="description" />
           <input type="number" name="amount" />
+          <input type="date" name="date" />
           <button type="submit">Add Debit</button>
         </form>
         <Link to="/">Return to Home</Link>
