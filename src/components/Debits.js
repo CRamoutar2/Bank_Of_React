@@ -24,6 +24,7 @@ export default class Debits extends Component {
             })}
           </table>
         </div>
+        styling
         <form className="mx-auto" onSubmit={this.props.addDebit}>
             <input 
               type="text" 
@@ -45,6 +46,7 @@ export default class Debits extends Component {
             />
             <button type="submit" className="border-2 border-green-800 p-2 bg-green-100 hover:scale-125 transform">Add Debit</button>
           </form>
+        main
         <Link to="/">Return to Home</Link>
       </div>
     );
