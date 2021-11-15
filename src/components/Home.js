@@ -11,32 +11,22 @@ export default class Home extends Component {
     }
   }
 
-  // async componentDidMount() {
-  //   let credits = fetch("https://moj-api.herokuapp.com/credits")
-  //                 .then(res => res.json())
-  //                 .then(result => {
-  //                   this.setState({
-  //                     ...this.state,
-  //                     credit: result,
-  //                   })
-  //                 })
-  // }
-
   render() {
     return (
         <div>
-          <img src={Bank} alt="bank" height="100px" width="100px" />
-          <h1>Bank of React</h1>
-          
-          <Link to ="/userProfile">User Profile</Link>
-          <br></br>
-          <Link to ="/login">Login Here</Link>
-          <br></br>
-          <Link to ="/Credits">View Credits</Link>
-          <br></br>
-          <Link to ="/Debits">View Debits</Link>
-
-          <AccountBalance accountBalance={this.props.accountBalance}/>
+          <div className="bg-green-100 h-20 flex justify-start align-middle">
+            <img src={Bank} alt="bank" className="h-14 w-14 m-3" />
+            <h1 className="text-4xl py-5 px-2">Bank of React</h1>
+          </div>
+          <div className="flex justify-center align-middle">
+            <AccountBalance accountBalance={this.props.accountBalance}/>
+          </div>
+          <p><Link to ="/userProfile">User Profile</Link></p>
+          <p><Link to ="/login">Login Here</Link></p>
+          <div className="flex justify-center align-middle">
+            <Link to ="/Credits"><p className="text-xl rounded border-2 border-green-600 p-2 m-4">View Credits</p></Link>
+            <Link to ="/Debits"><p className="text-xl rounded border-2 border-green-600 p-2 m-4">View Debits</p></Link>
+          </div>
         </div>
     );
   }

@@ -17,9 +17,11 @@ export default class App extends Component {
         userName: 'joe_shmo',
         memberSince: '07/23/96',
       },
-      debits:[],
-      credits:[]
-    }
+      debits: [],
+      credits: [],
+    };
+    this.addDebit = this.addDebit.bind(this);
+    this.addCredit = this.addCredit.bind(this);
   }
 
   async componentDidMount() {
@@ -70,7 +72,34 @@ export default class App extends Component {
     e.preventDefault();
     const desc = e.target[0].value;
     const amt = Number(e.target[1].value);
-    console.log(desc, amt)
+    const date = e.target[2].value;
+    console.log(desc, amt, date);
+    const newEntry = {
+      description: desc,
+      amount: amt, 
+      date: date,
+    };
+    this.setState({
+      debits: [...this.state.debits, newEntry],
+      accountBalance: this.state.accountBalance + amt,
+    });
+  }
+  
+  addCredit(e) {
+    e.preventDefault();
+    const desc = e.target[0].value;
+    const amt = Number(e.target[1].value);
+    const date = e.target[2].value;
+    console.log(desc, amt, date);
+    const newEntry = {
+      description: desc,
+      amount: amt, 
+      date: date,
+    };
+    this.setState({
+      credits: [...this.state.credits, newEntry],
+      accountBalance: this.state.accountBalance - amt,
+    });
   }
 
   render() {
@@ -79,7 +108,7 @@ export default class App extends Component {
         <UserProfile userName={this.state.currentUser.userName} memberSince={this.state.currentUser.memberSince}  />
     );
     const LogInComponent = () => (<LogIn user={this.state.currentUser} mockLogIn={this.mockLogIn} />);
-    const CreditsComponent = ()=>(<Credits credits={this.state.credits} />);
+    const CreditsComponent = ()=>(<Credits credits={this.state.credits} addCredit={this.addCredit} />);
     const DebitsComponent = () =>(<Debits debits={this.state.debits} addDebit={this.addDebit} />);
     return (
         <Router>
