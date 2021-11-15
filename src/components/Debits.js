@@ -15,7 +15,7 @@ export default class Debits extends Component {
         </div>
         <form onSubmit={this.props.addDebit}>
           <input type="text" name="description" />
-          <input type="number" name="amount" />
+          <input type="number" step="0.01" name="amount" />
           <button type="submit">Add Debit</button>
         </form>
         <Link to="/">Return to Home</Link>
