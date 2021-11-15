@@ -7,11 +7,22 @@ export default class Debits extends Component {
     return (
       <div>
         <h1>Debit Page</h1>
-        <div> Debits: 
-          {this.props.debits.map(debit => {
-            let date = debit.date.slice(0,10);
-            return <li key={debit.id}>{debit.amount} {debit.description} {date}</li>
-          })} 
+        <div> Debits:
+        <table className="border-collapse border-2 border-green-600 m-12">
+            <th className="border-2 border-green-600 p-2">Amount</th>
+            <th className="border-2 border-green-600 p-2">Description</th>
+            <th className="border-2 border-green-600 p-2">Date</th>
+            {this.props.debits.map(debit => {
+              let date = debit.date.slice(0,10);
+              return (
+                <tr>
+                  <td className="border-2 border-green-600 p-2">${debit.amount}</td>
+                  <td className="border-2 border-green-600 p-2">{debit.description}</td>
+                  <td className="border-2 border-green-600 p-2">{date}</td>
+                </tr>
+              )
+            })}
+          </table>
         </div>
         <form onSubmit={this.props.addDebit}>
           <input type="text" name="description" />
