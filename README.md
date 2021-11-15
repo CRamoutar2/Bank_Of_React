@@ -1,6 +1,5 @@
 # Assignment_4: Bank of React
-<br>
-Assignment 4: Bank of React</br>
+
 <u>Contributors:</u></br>
 <ul>
 <li>Chethram Ramoutar</li>
