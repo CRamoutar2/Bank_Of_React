@@ -17,8 +17,8 @@ export default class App extends Component {
         userName: 'joe_shmo',
         memberSince: '07/23/96',
       },
-      debits:[],
-      credits:[]
+      debits: [],
+      credits: [],
     };
     this.addDebit = this.addDebit.bind(this);
     this.addCredit = this.addCredit.bind(this);
@@ -102,7 +102,7 @@ export default class App extends Component {
         <UserProfile userName={this.state.currentUser.userName} memberSince={this.state.currentUser.memberSince}  />
     );
     const LogInComponent = () => (<LogIn user={this.state.currentUser} mockLogIn={this.mockLogIn} />);
-    const CreditsComponent = ()=>(<Credits credits={this.state.credits} />);
+    const CreditsComponent = ()=>(<Credits credits={this.state.credits} addCredit={this.addCredit} />);
     const DebitsComponent = () =>(<Debits debits={this.state.debits} addDebit={this.addDebit} />);
     return (
         <Router>
