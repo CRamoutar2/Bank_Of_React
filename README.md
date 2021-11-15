@@ -7,8 +7,6 @@ Assignment 4: Bank of React</br>
 <li>David Guyot</li>
 <li>Isabel Abonitalla</li>
 </ul>
-<br><br>
-
 
 # Getting Started with Create React App
 
